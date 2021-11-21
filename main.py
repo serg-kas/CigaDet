@@ -7,21 +7,22 @@
 """
 # Модуль с функицями
 import cigadet
-
 import os
+import sys
 import warnings
 warnings.filterwarnings("ignore")
 
-# Путь к модели
-model_PATH = 'best-4-model-inception.h5'
-# Папки
-source_PATH = 'source_files'
-out_PATH = 'out_files'
 # Допустимые форматы
 img_type_list = ['.jpg', '.jpeg', '.png']
 vid_type_list = ['.mp4', '.avi']
-#
-if __name__ == '__main__':
+
+
+def process(source_PATH, out_PATH, model_PATH):
+    """
+    @param: source_PATH путь к каталогу с файлами
+    @param: out_PATH путь результатам
+    @param: model_PATH Путь к модели
+    """
     # Создадим папки для файлов, если их нет
     if not (source_PATH in os.listdir('.')):
         os.mkdir(source_PATH)
@@ -77,3 +78,9 @@ if __name__ == '__main__':
         print('Обработали {0} видео.'.format(len(vid_files)))
 
 
+if __name__ == '__main__':
+    source_PATH = 'source_files' if len(sys.argv) <= 1 else sys.argv[1]
+    out_PATH = 'out_files' if len(sys.argv) <= 2 else sys.argv[2]
+    model_PATH = 'best-4-model-inception.h5' if len(sys.argv) <= 3 else sys.argv[3]
+
+    process(source_PATH, out_PATH, model_PATH)
