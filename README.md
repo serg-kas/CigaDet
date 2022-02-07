@@ -1,6 +1,8 @@
 # CigaDet
 
-Детектор сигарет в картинке/кадре как регрессия bounding box
+Cigarette detector in picture/frame as bounding box regression. 
+We do not determine the presence of an object in the picture (that is, we do not perform object detection).
+The object is always present and we only localize its bounding box.
 
 Файл весов модели надо положить в папку программы.
 (best-4-model-inception.h5 на google drive, размер ок.2Gb)
